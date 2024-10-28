@@ -1,22 +1,28 @@
-//
-// SPDX-FileCopyrightText: The LineageOS Project
-// SPDX-License-Identifier: Apache-2.0
-//
+/*
+ * Copyright (C) 2024 The LineageOS Project
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
-cc_binary {
-    name: "vendor.mediatek.hardware.mtkpower-service.stub",
-    defaults: ["android.hardware.power-ndk_shared"],
-    relative_install_path: "hw",
-    init_rc: ["vendor.mediatek.hardware.mtkpower-service.stub.rc"],
-    vintf_fragments: ["vendor.mediatek.hardware.mtkpower-service.stub.xml"],
-    vendor: true,
-    srcs: [
-        "MtkPowerService.cpp",
-        "service.cpp",
-    ],
-    shared_libs: [
-        "libbase",
-        "libbinder_ndk",
-        "vendor.mediatek.hardware.mtkpower-V1-ndk",
+aidl_interface {
+    name: "vendor.mediatek.hardware.mtkpower",
+    vendor_available: true,
+    srcs: ["vendor/mediatek/hardware/mtkpower/*.aidl"],
+    stability: "vintf",
+    owner: "mediatek",
+
+    backend: {
+        cpp: {
+            enabled: true,
+        },
+        java: {
+            sdk_version: "module_current",
+        },
+    },
+    versions_with_info: [
+        {
+            version: "1",
+            imports: [],
+        },
     ],
 }
