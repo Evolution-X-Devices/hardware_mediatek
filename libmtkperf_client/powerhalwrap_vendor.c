@@ -65,6 +65,8 @@ int PowerHal_Wrap_EnableMultiDisplayMode(int enable, int fps) {
     return 0;
 }
 
-int PowerHal_Wrap_EnableCameraMode(int enable, int param) {
+int PowerHal_Wrap_EnableCameraMode(int enable, int param)
+{
+    ALOGD("[%s]: enable: %d, param: %d", __func__, enable, param);
     return 0;
 }
